@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LearningWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="389" Width="611">
+
+	<!--StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<TextBlock Text ="Name:" Margin="10"/>
+			<TextBlock Margin="10" Text="{Binding Name}" />
+		</StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<TextBlock Text= "Title:" Margin="10" />
+			<TextBlock Margin="10" Text="{Binding Title}" />
+		</StackPanel>
+		<TextBox Name="textBox1" TextWrapping="Wrap" Margin="10" Grid.Row="7">
+		Right Click to bring up context menu.
+
+			<TextBox.ContextMenu>
+
+				<ContextMenu ContextMenuClosing="ContextMenu_Close" >
+					<MenuItem Header="_Bold" IsCheckable="True" Checked="Bold_Checked" Unchecked="Bold_Unchecked" />
+					<MenuItem Header="_Italic" IsCheckable="True" Checked="Italic_Checked" Unchecked="Italic_Unchecked" />
+					<Separator />
+					<MenuItem Header="Increase Font Size" Click="IncreaseFont_Click" />
+					<MenuItem Header="Decrease Font Size" Click="DecreaseFont_Click" />
+				</ContextMenu>
+			</TextBox.ContextMenu>
+		</TextBox>
+	</StackPanel -->
+	<StackPanel>
+
+		<ComboBox Name = "comboBox"  Margin = "50" Width = "100">
+			<ComboBoxItem Content = "Green" />
+			<ComboBoxItem  Content = "Yellow" IsSelected = "True" />
+			<ComboBoxItem Content = "Orange" />
+		</ComboBox>
+
+		<TextBox  Name = "textBox1" Margin = "50" 
+		          Width = "100" Height = "23" VerticalAlignment = "Top" 
+		          Text  = "{Binding ElementName = comboBox, Path = SelectedItem.Content, 
+         Mode = TwoWay, UpdateSourceTrigger = PropertyChanged}" 
+		          Background = "{Binding ElementName = comboBox, Path = SelectedItem.Content}">
+		</TextBox>
+
+	</StackPanel>
+
+
 </Window>
